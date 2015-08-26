@@ -34,7 +34,8 @@ import fm.last.citrine.scheduler.SchedulerManager;
  * TaskManager implementation.
  */
 public class TaskManagerImpl implements TaskManager, BeanFactoryAware {
-
+  
+  private static final long serialVersionUID = 7865534545748992464L;
   private final SchedulerManager schedulerManager;
   private final TaskDAO taskDAO;
   private TaskRunDAO taskRunDAO;
@@ -71,9 +72,10 @@ public class TaskManagerImpl implements TaskManager, BeanFactoryAware {
    * @param task Task to save.
    */
   @Override
-  public void save(Task task) {
+  public long save(Task task) {
     taskDAO.save(task);
     schedulerManager.scheduleTask(task, true);
+    return task.getId();
   }
 
   /**

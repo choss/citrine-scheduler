@@ -15,6 +15,7 @@
  */
 package fm.last.citrine.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ import org.hibernate.annotations.AccessType;
  */
 @Entity
 @Table(name = TableConstants.TABLE_TASKS)
-public class Task {
+public class Task implements Serializable {
 
   private static Logger log = Logger.getLogger(Task.class);
 
@@ -59,6 +60,7 @@ public class Task {
   private String groupName;
   private String command;
   private String beanName;
+  private String timeZoneString = "GMT";
 
   private boolean enabled = DEFAULT_ENABLED;
   private boolean stopOnError = DEFAULT_STOP_ON_ERROR;
@@ -165,6 +167,11 @@ public class Task {
     this.priority = priority;
   }
 
+	@Transient
+	public String getTimerScheduleOverview() {
+		return timerSchedule + " " + timeZoneString;
+	}
+  
   @Basic
   public String getTimerSchedule() {
     return timerSchedule;
@@ -420,6 +427,14 @@ public class Task {
 
   public String toString() {
     return "id=" + id + ",name=" + name;
+  }
+
+  public void setTimeZone(String timeZoneString) {
+    this.timeZoneString = timeZoneString;
+  }
+
+  public String getTimeZone() {
+    return timeZoneString;
   }
 
 }

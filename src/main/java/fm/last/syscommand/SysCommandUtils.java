@@ -58,8 +58,10 @@ public final class SysCommandUtils {
       }
       if (currentChar == '\'') {
         insideSingleQuotes = !insideSingleQuotes;
+        continue;
       } else if (currentChar == '\"') {
         insideDoubleQuotes = !insideDoubleQuotes;
+        continue;
       }
       currentCommand.append(currentChar);
     }

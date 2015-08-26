@@ -15,10 +15,12 @@
  */
 package fm.last.citrine.model;
 
+import java.io.Serializable;
+
 /**
  * Enumeration representing the various Status values that a TaskRun can have.
  */
-public enum Status {
+public enum Status implements Serializable {
   UNKNOWN(0), INITIALISING(5), /* not currently used */
   RUNNING(10), /* job is running */
   CANCELLING(15), /* received request to cancel by user */

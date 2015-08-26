@@ -21,6 +21,7 @@ package fm.last.citrine.scheduler;
 public interface SchedulerConstants {
 
   public final String TASK_ID = "taskid";
+  public final String TASK_NAME = "taskName";
   public final String TASK_COMMAND = "command";
   public final String TASK_RUN_ID = "taskrunid";
   public final String JOB_BEAN = "jobbean";

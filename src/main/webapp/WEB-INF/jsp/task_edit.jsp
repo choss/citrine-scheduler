@@ -37,6 +37,14 @@
           </td>
         </tr>
         <tr>
+          <td align="right">Prepared Command:</td>
+          <td>
+            <form:select path="preparedCommand">
+                <form:options items="${allCommands}" />
+             </form:select>
+          </td>
+        </tr>
+        <tr>
           <td align="right">Bean name:</td>
           <td>
             <form:select path="task.beanName">
@@ -44,6 +52,14 @@
             </form:select>
           </td>
         </tr>
+        <tr>
+          <td align="right">Timezone:</td>
+          <td>
+            <form:select path="task.timeZone">
+                <form:options items="${timeZones}" itemValue="iD" itemLabel="iD" />
+             </form:select>
+	    </td>
+	    </tr>
         <tr>
           <td align="right">Priority:</td>
           <td>

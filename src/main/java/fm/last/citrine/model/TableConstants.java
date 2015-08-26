@@ -15,10 +15,12 @@
  */
 package fm.last.citrine.model;
 
+import java.io.Serializable;
+
 /**
  * Constants interface for table definitions.
  */
-public interface TableConstants {
+public interface TableConstants extends Serializable {
 
   public static final String TABLE_TASKS = "tasks";
   public static final String TABLE_TASK_RUNS = "task_runs";

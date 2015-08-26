@@ -15,6 +15,7 @@
  */
 package fm.last.citrine.service;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ import fm.last.citrine.model.Task;
 /**
  * Manages Tasks.
  */
-public interface TaskManager {
+public interface TaskManager extends Serializable {
 
   /**
    * Retrieves a Task by its primary key.
@@ -38,7 +39,7 @@ public interface TaskManager {
    * 
    * @param task Task to save.
    */
-  public void save(Task task);
+  public long save(Task task);
 
   /**
    * Retrieves all Task in storage.

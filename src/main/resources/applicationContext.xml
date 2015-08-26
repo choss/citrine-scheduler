@@ -153,5 +153,20 @@
     <property name="taskManager" ref="taskManager" />
     <property name="taskRunManager" ref="taskRunManager" />
   </bean>
+  
+  	<bean id= "httpInvokerCitrineService"
+		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+		<property name="service" ref="taskManager"/>
+		<property name="serviceInterface" value="fm.last.citrine.service.TaskManager" />
+	</bean>
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				/citrine.service=httpInvokerCitrineService
+			</value>
+		</property>
+	</bean>
 
 </beans>

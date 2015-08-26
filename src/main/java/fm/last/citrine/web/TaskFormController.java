@@ -18,6 +18,7 @@ package fm.last.citrine.web;
 import static fm.last.citrine.web.Constants.PARAM_CANCEL;
 import static fm.last.citrine.web.Constants.PARAM_DELETE;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import fm.last.citrine.model.Task;
 import fm.last.citrine.service.TaskManager;
+import fm.last.util.PreparedCommandUtils;
+import fm.last.util.TimeZoneList;
 
 /**
  * Controller implementation for handling the form used for creating and editing Tasks.
@@ -75,6 +78,8 @@ public class TaskFormController extends SimpleFormController {
     throws Exception {
     Map<String, Object> referenceData = new HashMap<String, Object>();
     referenceData.put("jobBeans", getJobBeanNames());
+    referenceData.put("timeZones", TimeZoneList.getAllAvailableTimeZones());
+    referenceData.put("allCommands", getAllCommands());
 
     String idString = request.getParameter(PARAM_ID);
     if (idString != null) { // only allow parent/child relationships to be created if Task is being edited, not created
@@ -84,6 +89,13 @@ public class TaskFormController extends SimpleFormController {
 
     referenceData.put(Constants.PARAM_SELECTED_GROUP_NAME, request.getParameter(Constants.PARAM_SELECTED_GROUP_NAME));
     return referenceData;
+  }
+
+  private List<String> getAllCommands() {
+    List<String> commands = new ArrayList<String>();
+    commands.add("- not selected -");
+    commands.addAll(PreparedCommandUtils.getAllScriptsList());
+    return commands;
   }
 
   @Override
@@ -123,11 +135,15 @@ public class TaskFormController extends SimpleFormController {
       // task from web doesn't have parent/child relationships, so retrieve it from db before deleting
       taskManager.delete(oldTask);
     } else {
+      if (!taskDTO.getPreparedCommand().startsWith("-")) {
+        taskDTO.getTask().setCommand(taskDTO.getPreparedCommand());
+      }
       Task newTask = taskDTO.getTask();
       if (oldTask != null) {
         newTask.setChildTasks(oldTask.getChildTasks());
       }
       taskManager.save(newTask);
+      response.setHeader("X-CITRINE-ADDING-ID", "" + newTask.getId());
     }
     return new ModelAndView(new RedirectView(getSuccessView(taskDTO.getSelectedGroupName())));
   }

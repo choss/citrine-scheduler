@@ -15,6 +15,7 @@
  */
 package fm.last.citrine.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -37,8 +38,9 @@ import org.hibernate.annotations.Index;
 @Table(name = TableConstants.TABLE_TASK_RUNS)
 @org.hibernate.annotations.Table(appliesTo = TableConstants.TABLE_TASK_RUNS, indexes = { @Index(name = "i_task_runs_taskId_startDate", columnNames = {
     "taskId", "startDate" }) })
-public class TaskRun {
-
+public class TaskRun implements Serializable {
+  
+  private static final long serialVersionUID = -8859950052271279114L;
   private long id;
   private int version;
   private Status status;

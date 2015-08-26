@@ -20,6 +20,7 @@ import static fm.last.citrine.scheduler.SchedulerConstants.SYS_OUT;
 import static fm.last.citrine.scheduler.SchedulerConstants.TASK_COMMAND;
 import static fm.last.citrine.scheduler.SchedulerConstants.TASK_RUN_ID;
 
+import java.io.File;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -88,6 +89,8 @@ public class SystemExecJob implements InterruptableJob {
     }
     List<String> command = SysCommandUtils.convertCommand(commandString);
     log.info("Running " + command);
+    File workingDirectory = new File(command.get(0));
+    executor.setWorkingDirectory(workingDirectory);
     executor.start(command);
     int exitStatus = executor.waitForProcess();
     log.info("Job finished with exit status " + exitStatus);

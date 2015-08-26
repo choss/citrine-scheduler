@@ -19,10 +19,12 @@ import static fm.last.citrine.scheduler.SchedulerConstants.BEAN_FACTORY;
 import static fm.last.citrine.scheduler.SchedulerConstants.TASK_BEAN_NAME;
 import static fm.last.citrine.scheduler.SchedulerConstants.TASK_COMMAND;
 import static fm.last.citrine.scheduler.SchedulerConstants.TASK_ID;
+import static fm.last.citrine.scheduler.SchedulerConstants.TASK_NAME;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -87,6 +89,7 @@ public class SchedulerManager implements BeanFactoryAware {
     }
     JobDetail jobDetail = new JobDetail(String.valueOf(task.getId()), Scheduler.DEFAULT_GROUP, jobClass);
     JobDataMap jobDataMap = jobDetail.getJobDataMap();
+    jobDataMap.put(TASK_NAME, task.getName());
     jobDataMap.put(TASK_ID, task.getId());
     jobDataMap.put(TASK_COMMAND, task.getCommand());
     // put the name of the task to run and the factory to use to retrieve it into the map to be used
@@ -144,6 +147,7 @@ public class SchedulerManager implements BeanFactoryAware {
         log.info("Scheduling task with id " + task.getId() + " and schedule: " + task.getTimerSchedule());
         CronTrigger cronTrigger = new CronTrigger(String.valueOf(task.getId()), Scheduler.DEFAULT_GROUP,
             task.getTimerSchedule());
+        cronTrigger.setTimeZone(TimeZone.getTimeZone(task.getTimeZone()));
         scheduler.scheduleJob(jobDetail, cronTrigger);
       }
     } catch (SchedulerException e) {

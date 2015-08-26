@@ -15,6 +15,11 @@
  */
 package fm.last.citrine.web;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.TimeZone;
+
 import fm.last.citrine.model.Task;
 
 /**
@@ -24,6 +29,7 @@ public class TaskDTO {
 
   private Task task = new Task();
   private String selectedGroupName;
+  private String preparedCommand;
 
   public TaskDTO() {
   }
@@ -58,6 +64,14 @@ public class TaskDTO {
    */
   public void setSelectedGroupName(String selectedGroupName) {
     this.selectedGroupName = selectedGroupName;
+  }
+
+  public void setPreparedCommand(String preparedCommand) {
+    this.preparedCommand = preparedCommand;
+  }
+
+  public String getPreparedCommand() {
+    return preparedCommand;
   }
 
 }

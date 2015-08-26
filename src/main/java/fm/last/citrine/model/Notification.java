@@ -15,6 +15,8 @@
  */
 package fm.last.citrine.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -23,8 +25,9 @@ import javax.persistence.Embeddable;
  * Class that represents a notification.
  */
 @Embeddable
-public class Notification {
+public class Notification implements Serializable {
 
+  private static final long serialVersionUID = -5112125155631608956L;
   private static final boolean DEFAULT_NOTIFY_ON_SUCCESS = true;
   private static final boolean DEFAULT_NOTIFY_ON_FAILURE = true;
 

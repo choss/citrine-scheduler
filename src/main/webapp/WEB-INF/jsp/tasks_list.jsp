@@ -25,7 +25,7 @@
       </display:column>
       <display:column property="groupName" title="Group" class="${recentStatus[task.id]}" sortable="true"/>
       <display:column property="description" class="${recentStatus[task.id]}"/>
-      <display:column property="timerSchedule" class="${recentStatus[task.id]}"/>
+      <display:column property="timerScheduleOverview" class="${recentStatus[task.id]}"/>
       <display:column title="Task Runs" class="${recentStatus[task.id]}">
         <a href="task_runs.do?action=list&taskId=${task.id}&selectedGroupName=${selectedGroupName}">Task Runs</a>
       </display:column>
