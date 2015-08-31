@@ -10,6 +10,7 @@ public class TimeZoneList {
   private static final List<TimeZone> allTimeZones;
 
   static {
+    String boxDefaultTimezone = TimeZone.getDefault().getID();
     String[] tzIDs = { "GMT", "Europe/Berlin", "Europe/Paris", "Europe/Sofia", "Europe/Moscow", "Europe/Brussels",
         "Europe/Amsterdam", "Europe/London", "Europe/Dublin", "Europe/Budapest", "Europe/Luxembourg", "Europe/Madrid",
         "Europe/Prague", "Europe/Zurich", "Europe/Vienna", "Europe/Athens", "America/New_York", "US/Pacific",
