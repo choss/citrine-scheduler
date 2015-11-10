@@ -1,0 +1,8 @@
+language: java
+services:
+  - mysql
+before_install:
+ - mysql -e "create database IF NOT EXISTS citrine_unittest;" -uroot
+ - mysql -uroot < ./src/main/sql/citrine-ddl-mysql.sql
+notifications:
+  email: never
