@@ -22,6 +22,27 @@ public class PreparedCommandConfigElement {
 	private static final String[] excludeEndings = { "_nofind.sh" };
 	private static final String[] includePrefix = { "run_", "prepare_" };
 
+	
+	public String getBaseDirectory() {
+		return baseDirectory;
+	}
+
+
+	public String[] getUsableExtensions() {
+		return usableExtensions.toArray(new String[usableExtensions.size()]);
+	}
+
+
+	public List<String> getExcludedSuffixes() {
+		return excludedSuffixes;
+	}
+
+
+	public List<String> getManditoryPrefixes() {
+		return manditoryPrefixes;
+	}
+
+
 	@Override
 	public String toString() {
 		return "PreparedCommandConfigElement [baseDirectory=" + baseDirectory + ", usableExtensions=" + usableExtensions + ", excludedSuffixes="
