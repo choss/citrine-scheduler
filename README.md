@@ -1,5 +1,7 @@
 **Overview**
+
 [![Build Status](https://travis-ci.org/choss/citrine-scheduler.svg)](https://travis-ci.org/choss/citrine-scheduler)
+
 This is a patched version of citrine with a couple of new features (when done)
 
 * timezone aware, possibility to select timezone for schedule
