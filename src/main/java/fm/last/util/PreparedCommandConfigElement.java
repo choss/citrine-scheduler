@@ -17,35 +17,43 @@ public class PreparedCommandConfigElement {
 	private List<String> usableExtensions;
 	private List<String> excludedSuffixes;
 	private List<String> manditoryPrefixes;
+	private String commandString;
+	private String title;
 
-	public PreparedCommandConfigElement(String baseDirectory, List<String> usableExtensions, List<String> excludedSuffixes, List<String> manditoryPrefixes) {
+	public PreparedCommandConfigElement(String title, String baseDirectory, List<String> usableExtensions, List<String> excludedSuffixes, List<String> manditoryPrefixes,
+			String commandString) {
 		super();
 		this.baseDirectory = baseDirectory;
 		this.usableExtensions = usableExtensions;
 		this.excludedSuffixes = excludedSuffixes;
 		this.manditoryPrefixes = manditoryPrefixes;
+		this.commandString = commandString;
+		this.title = title;
 	}
-
 
 	public String getBaseDirectory() {
 		return baseDirectory;
 	}
 
-
 	public String[] getUsableExtensions() {
 		return usableExtensions.toArray(new String[usableExtensions.size()]);
 	}
-
 
 	public List<String> getExcludedSuffixes() {
 		return excludedSuffixes;
 	}
 
-
 	public List<String> getManditoryPrefixes() {
 		return manditoryPrefixes;
 	}
 
+	public String getCommandString() {
+		return commandString;
+	}
+
+	public String getTitle() {
+		return title;
+	}
 
 	@Override
 	public String toString() {

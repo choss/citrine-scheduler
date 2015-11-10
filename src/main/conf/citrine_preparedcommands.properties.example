@@ -9,12 +9,14 @@
 # 
 # The code should gracefuly handle missing subparameters, if they are not needed (e.g. extensions or exclusions)
 prepcmd1.baseDirectory=/tmp/citrine_test
+prepcmd1.title=Random Title
 prepcmd1.usableExtension=sh
 prepcmd1.usableExtension=py
 prepcmd1.excludedSuffix=_nofind.sh
 prepcmd1.excludedSuffix=_nofind.py
 prepcmd1.manditoryPrefix=run
 prepcmd1.manditoryPrefix=execute
+prepcmd1.command=nohup %1$s
 
 prepcmd2.baseDirectory=/tmp/citrine_test
 prepcmd2.usableExtension=sh

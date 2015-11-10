@@ -29,8 +29,7 @@ public class PreparedCommandUtils {
 	}
 
 	public static Collection<? extends String> getAllScriptsList() {
-		getAllStartScripts(CONFIGURED_DIRECTORIES);
-		return Collections.emptyList();
+		return getAllStartScripts(CONFIGURED_DIRECTORIES);
 	}
 
 	public static List<File> getAllStartScripts(PreparedCommandConfigElement singleDirectory) {
@@ -63,10 +62,14 @@ public class PreparedCommandUtils {
 		for (PreparedCommandConfigElement element : baseDirs) {
 			File baseDir = new File(element.getBaseDirectory());
 			String baseDirString = baseDir.getName();
-			result.add("- " + baseDirString + " -");
+			if (element.getTitle().trim().isEmpty()) {
+				result.add("- " + baseDirString + " -");
+			} else {
+				result.add("- " + element.getTitle().trim() + " -");
+			}
 			List<File> allScripts = getAllStartScripts(element);
 			for (File file : allScripts) {
-				result.add("'" + file.getAbsolutePath() + "'");
+				result.add(String.format(element.getCommandString(), file.getAbsolutePath()));
 			}
 		}
 		return result;
@@ -88,18 +91,21 @@ public class PreparedCommandUtils {
 		try {
 			PropertiesConfiguration pc = new PropertiesConfiguration(resource.getURL());
 			int i = 1;
-			while (pc.containsKey(CONFIG_PROPERTY_PREFIX + i)) {
+			List<PreparedCommandConfigElement> result = new ArrayList<PreparedCommandConfigElement>();
+			while (pc.containsKey(CONFIG_PROPERTY_PREFIX + i + ".baseDirectory")) {
 				String baseDirectory = pc.getString(CONFIG_PROPERTY_PREFIX + i + ".baseDirectory");
-				List usableExtensions = pc.getList(CONFIG_PROPERTY_PREFIX + i + "usableExtension", new ArrayList<String>());
-				List excludedSuffixes = pc.getList(CONFIG_PROPERTY_PREFIX + i + "excludedSuffix", new ArrayList<String>());
-				List manditoryPrefixes = pc.getList(CONFIG_PROPERTY_PREFIX + i + "manditoryPrefix", Collections.singletonList(""));
-				new PreparedCommandConfigElement(baseDirectory, usableExtensions, excludedSuffixes, manditoryPrefixes);
+				List usableExtensions = pc.getList(CONFIG_PROPERTY_PREFIX + i + ".usableExtension", new ArrayList<String>());
+				List excludedSuffixes = pc.getList(CONFIG_PROPERTY_PREFIX + i + ".excludedSuffix", new ArrayList<String>());
+				List manditoryPrefixes = pc.getList(CONFIG_PROPERTY_PREFIX + i + ".manditoryPrefix", Collections.singletonList(""));
+				String commandString = pc.getString(CONFIG_PROPERTY_PREFIX + i + ".command", "'%1$s'");
+				String titleString = pc.getString(CONFIG_PROPERTY_PREFIX + i + ".title", "");
+				result.add(new PreparedCommandConfigElement(titleString, baseDirectory, usableExtensions, excludedSuffixes, manditoryPrefixes, commandString));
 				i++;
 			}
+			return result;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		return null;
 	}
 
 }
