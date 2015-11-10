@@ -4,5 +4,6 @@ services:
 before_install:
  - mysql -e "create database IF NOT EXISTS citrine_unittest;" -uroot
  - mysql -uroot citrine_unittest < ./src/main/sql/citrine-ddl-mysql.sql
+ - apt-get -qq -y install sleep
 notifications:
   email: never

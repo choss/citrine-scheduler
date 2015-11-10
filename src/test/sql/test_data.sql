@@ -12,9 +12,9 @@ insert into tasks (command,          description,                               
           values ('clear_task_runs 30', 'Cleans up Task Runs in the database older than N days.
 By default N is 30, this can be set as the first argument to the job.', true,    'adminJob', 'Task Run Cleaner', 'admin',   0,        '0 0 3 * * ?', 0,       true,           true,        false); 
 
-Insert into tasks (id,command,description,enabled,beanName,name,groupName,priority,timerSchedule,version) values (1,'ssh localhost ls','description',true,'sysExecJob','enabledtask','testGroup',5,'0 1 * * * ?',0);
-Insert into tasks (id,command,description,enabled,beanName,name,groupName,priority,timerSchedule,version) values (2,'ssh localhost ls','description2',false,'sysExecJob','disabledtask','testGroup',15,'0 * * * * ?',0);
-Insert into tasks (id,command,description,enabled,beanName,name,groupName,priority,timerSchedule,version) values (3,'ssh localhost ls','taskWithRuns',false,'sysExecJob','taskWithRuns','someGroup',15,'0 * * * * ?',0);
+Insert into tasks (id,command,description,enabled,beanName,name,groupName,priority,timerSchedule,version) values (1,'ls','description',true,'sysExecJob','enabledtask','testGroup',5,'0 1 * * * ?',0);
+Insert into tasks (id,command,description,enabled,beanName,name,groupName,priority,timerSchedule,version) values (2,'ls','description2',false,'sysExecJob','disabledtask','testGroup',15,'0 * * * * ?',0);
+Insert into tasks (id,command,description,enabled,beanName,name,groupName,priority,timerSchedule,version) values (3,'ls','taskWithRuns',false,'sysExecJob','taskWithRuns','someGroup',15,'0 * * * * ?',0);
 
 -- tasks which have parent/child relationship
 INSERT INTO `tasks` (id, beanName, command, description, enabled, groupName, name, recipients,priority,timerSchedule, version)  VALUES (26,'beanName26','command26','description26','false','childTestGroup','name26',NULL,26,'',1),(27,'beanName27','command27','description27','false','childTestGroup','name27',NULL,27,'',1),(28,'beanName28','command28','description28','false','childTestGroup','name28',NULL,28,'',1),(29,'beanName29','command29','description29','false','childTestGroup','name29',NULL,29,'',1);
