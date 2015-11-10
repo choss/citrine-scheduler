@@ -17,7 +17,7 @@ public class PreparedCommandUtils {
 
   public static Collection<? extends String> getAllScriptsList() {
     // TODO Auto-generated method stub
-    // getAllReportLists("/path/to/directories");
+    // getAllStartScripts("/path/to/directories");
     return Collections.emptyList();
   }
 
