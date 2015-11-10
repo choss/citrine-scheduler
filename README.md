@@ -1,6 +1,9 @@
 **Overview**
+
 [![Build Status](https://travis-ci.org/choss/citrine-scheduler.svg)](https://travis-ci.org/choss/citrine-scheduler)
-Please not that the 4 test failures (at the moment) seem to be travisCI related. Locally all tests work (yeah it works on my machine excuse). Fixing the test is not high priority at the moment
+
+Please not that the 4 test failures (at the moment) seem to be travisCI related. Locally all tests work (yeah it works on my machine excuse). Fixing the test is not high priority at the moment.
+
 This is a patched version of citrine with a couple of new features
 
 * timezone aware, possibility to select timezone for schedule
