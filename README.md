@@ -5,6 +5,7 @@ This is a patched version of citrine with a couple of new features (when done)
 * timezone aware, possibility to select timezone for schedule
   * in oder to configure which timezones are available in the dropdown a file named citrine_timezones.properties needs to be created and put into the classpath. An example can be found in src/main/resources called defaultTimeZones.properties, which is also used in case there is no specific one. The timezone of the server and GMT are always added to the dropdown. Default for new tasks is GMT.
 * possibility to have directories enumerated and scripts available for quick selection to schedule
+  * for the usages of this feature please see: src/main/conf/citrine_preparedcommands.properties.example
 * Spring remoting added, to be able to interact with citrine from another frontend
 
 
