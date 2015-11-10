@@ -1,17 +1,14 @@
 package fm.last.util;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Properties;
 import java.util.Set;
 import java.util.TimeZone;
 
-import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -35,7 +32,7 @@ public class TimeZoneList {
 	}
 
 	private static Set<String> getConfiguredTimezones() {
-		Resource resource = new ClassPathResource("timezones.properties");
+		Resource resource = new ClassPathResource("citrine_timezones.properties");
 		final String[] tzIDs;
 		if (resource.exists()) {
 			tzIDs = readToArray(resource);

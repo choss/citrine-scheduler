@@ -1,0 +1,25 @@
+# This config is the configuration to enumerate script which should be selectable in citrine. The algorithm finds 
+# all files in the subdirs of the basedir which have one of the "usableExtensions". If the file ends with an
+# "excludedSuffix" it will be excluded. Files also need to start with one of # the "manditoryPrefixes". An accepted 
+# "manditoryPrefix" is also the empty string.
+#
+# The parsing of the file assumes that the first prepcmd is called prepcmd1, the second one prepcmd2 etc. It is
+# not allowed to to have multiple with the same number and there are no gaps allowed in the numbering. The behavior
+# when violating these assumptions is undefined (commons-configuration might have some graceful handling here - or not)
+# 
+# The code should gracefuly handle missing subparameters, if they are not needed (e.g. extensions or exclusions)
+prepcmd1.baseDirectory=/tmp/citrine_test
+prepcmd1.usableExtension=sh
+prepcmd1.usableExtension=py
+prepcmd1.excludedSuffix=_nofind.sh
+prepcmd1.excludedSuffix=_nofind.py
+prepcmd1.manditoryPrefix=run
+prepcmd1.manditoryPrefix=execute
+
+prepcmd2.baseDirectory=/tmp/citrine_test
+prepcmd2.usableExtension=sh
+prepcmd2.usableExtension=py
+prepcmd2.excludedSuffix=_nofind.sh
+prepcmd2.excludedSuffix=_nofind.py
+prepcmd2.manditoryPrefix=run
+prepcmd2.manditoryPrefix=execute

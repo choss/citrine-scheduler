@@ -3,7 +3,7 @@
 This is a patched version of citrine with a couple of new features (when done)
 
 * timezone aware, possibility to select timezone for schedule
-  * in oder to configure which timezones are available in the dropdown a file named timezones.properties needs to be created and put into the classpath. An example can be found in src/main/resources called defaultTimeZones.properties, which is also used in case there is no specific one. The timezone of the server and GMT are always added to the dropdown. Default for new tasks is GMT.
+  * in oder to configure which timezones are available in the dropdown a file named citrine_timezones.properties needs to be created and put into the classpath. An example can be found in src/main/resources called defaultTimeZones.properties, which is also used in case there is no specific one. The timezone of the server and GMT are always added to the dropdown. Default for new tasks is GMT.
 * possibility to have directories enumerated and scripts available for quick selection to schedule
 * Spring remoting added, to be able to interact with citrine from another frontend
 
@@ -23,4 +23,4 @@ Citrine has been moved to a new home in Github. Citrine isn't actively developed
 
 This project is available under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html).
 
-Copyright 2008-2015 Last.fm & Mass Dosage
+Copyright 2008-2015 Last.fm & Mass Dosage & choss

@@ -18,11 +18,15 @@ public class PreparedCommandConfigElement {
 	private List<String> excludedSuffixes;
 	private List<String> manditoryPrefixes;
 
-	private static final String[] extensions = { "sh" };
-	private static final String[] excludeEndings = { "_nofind.sh" };
-	private static final String[] includePrefix = { "run_", "prepare_" };
+	public PreparedCommandConfigElement(String baseDirectory, List<String> usableExtensions, List<String> excludedSuffixes, List<String> manditoryPrefixes) {
+		super();
+		this.baseDirectory = baseDirectory;
+		this.usableExtensions = usableExtensions;
+		this.excludedSuffixes = excludedSuffixes;
+		this.manditoryPrefixes = manditoryPrefixes;
+	}
 
-	
+
 	public String getBaseDirectory() {
 		return baseDirectory;
 	}

@@ -7,19 +7,28 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.io.FileUtils;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 public class PreparedCommandUtils {
 
+	private static final String CONFIG_PROPERTY_PREFIX = "prepcmd";
 	private static final List<PreparedCommandConfigElement> CONFIGURED_DIRECTORIES;
-	
+
 	static {
-		CONFIGURED_DIRECTORIES = new ArrayList<PreparedCommandConfigElement>();
+
+		Resource resource = new ClassPathResource("citrine_preparedcommands.properties");
+		if (!resource.exists()) {
+			CONFIGURED_DIRECTORIES = new ArrayList<PreparedCommandConfigElement>();
+		} else {
+			List<PreparedCommandConfigElement> result = getPreparedCommands(resource);
+			CONFIGURED_DIRECTORIES = result;
+		}
 	}
 
 	public static Collection<? extends String> getAllScriptsList() {
-		// TODO Auto-generated method stub
-		// getAllStartScripts("/path/to/directories");
 		getAllStartScripts(CONFIGURED_DIRECTORIES);
 		return Collections.emptyList();
 	}
@@ -73,6 +82,24 @@ public class PreparedCommandUtils {
 			}
 		});
 		return sortedFiles;
+	}
+
+	private static List<PreparedCommandConfigElement> getPreparedCommands(Resource resource) {
+		try {
+			PropertiesConfiguration pc = new PropertiesConfiguration(resource.getURL());
+			int i = 1;
+			while (pc.containsKey(CONFIG_PROPERTY_PREFIX + i)) {
+				String baseDirectory = pc.getString(CONFIG_PROPERTY_PREFIX + i + ".baseDirectory");
+				List usableExtensions = pc.getList(CONFIG_PROPERTY_PREFIX + i + "usableExtension", new ArrayList<String>());
+				List excludedSuffixes = pc.getList(CONFIG_PROPERTY_PREFIX + i + "excludedSuffix", new ArrayList<String>());
+				List manditoryPrefixes = pc.getList(CONFIG_PROPERTY_PREFIX + i + "manditoryPrefix", Collections.singletonList(""));
+				new PreparedCommandConfigElement(baseDirectory, usableExtensions, excludedSuffixes, manditoryPrefixes);
+				i++;
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return null;
 	}
 
 }
