@@ -6,7 +6,3 @@ before_install:
  - mysql -uroot citrine_unittest < ./src/main/sql/citrine-ddl-mysql.sql
 notifications:
   email: never
-addons:
-  apt:
-    packages:
-    - sleep

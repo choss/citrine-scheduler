@@ -1,9 +1,11 @@
 **Overview**
 [![Build Status](https://travis-ci.org/choss/citrine-scheduler.svg)](https://travis-ci.org/choss/citrine-scheduler)
 This is a patched version of citrine with a couple of new features (when done)
-- timezone aware, possibility to select timezone for schedule
-- possibility to have directories enumerated and scripts available for quick selection to schedule
-- Spring remoting added, to be able to interact with citrine from another frontend
+
+* timezone aware, possibility to select timezone for schedule
+  * in oder to configure which timezones are available in the dropdown a file named timezones.properties needs to be created and put into the classpath. An example can be found in src/main/resources called defaultTimeZones.properties, which is also used in case there is no specific one. The timezone of the server and GMT are always added to the dropdown. Default for new tasks is GMT.
+* possibility to have directories enumerated and scripts available for quick selection to schedule
+* Spring remoting added, to be able to interact with citrine from another frontend
 
 
 **Citrine** is a Java web application which can be used to configure, manage and monitor the running of various tasks (typically, but not limited to, shell scripts). It can be thought of as a GUI replacement for cron with extra functionality. It can also be thought of as a GUI for the [Java Quartz Scheduler](http://quartz-scheduler.org/) ("citrine" is a type of quartz).
