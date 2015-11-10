@@ -90,7 +90,7 @@ public class SystemExecJob implements InterruptableJob {
     List<String> command = SysCommandUtils.convertCommand(commandString);
     log.info("Running " + command);
     File workingDirectory = new File(command.get(0));
-    executor.setWorkingDirectory(workingDirectory);
+    executor.setWorkingDirectory(workingDirectory.getParentFile());
     executor.start(command);
     int exitStatus = executor.waitForProcess();
     log.info("Job finished with exit status " + exitStatus);
