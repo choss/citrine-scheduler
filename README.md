@@ -1,6 +1,7 @@
 **Overview**
 [![Build Status](https://travis-ci.org/choss/citrine-scheduler.svg)](https://travis-ci.org/choss/citrine-scheduler)
-This is a patched version of citrine with a couple of new features (when done)
+Please not that the 4 test failures (at the moment) seem to be travisCI related. Locally all tests work (yeah it works on my machine excuse). Fixing the test is not high priority at the moment
+This is a patched version of citrine with a couple of new features
 
 * timezone aware, possibility to select timezone for schedule
   * in oder to configure which timezones are available in the dropdown a file named citrine_timezones.properties needs to be created and put into the classpath. An example can be found in src/main/resources called defaultTimeZones.properties, which is also used in case there is no specific one. The timezone of the server and GMT are always added to the dropdown. Default for new tasks is GMT.
