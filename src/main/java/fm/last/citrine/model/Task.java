@@ -91,12 +91,12 @@ public class Task implements Serializable {
 		this(name, groupName, beanName, DEFAULT_ENABLED, DEFAULT_STOP_ON_ERROR, null, null);
 	}
 
-	public Task(String name) {
-		this(name, null, null);
+	public Task(String name, String group) {
+		this(name, group, null);
 	}
 
 	public Task() {
-		this(null);
+		this(null, null, null);
 	}
 
 	@Transient

@@ -51,11 +51,11 @@ public class TaskTest {
 
   @Test
   public void testGetParentIds_MutlipleParents() {
-    Task task1 = new Task("t1");
+    Task task1 = new Task("t1", "test_group");
     task1.setId(1);
-    Task task2 = new Task("t2");
+    Task task2 = new Task("t2", "test_group");
     task2.setId(2);
-    Task task3 = new Task("t3");
+    Task task3 = new Task("t3", "test_group");
     task3.setId(3);
 
     task1.addChildTask(task3);
@@ -71,17 +71,17 @@ public class TaskTest {
 
   @Test
   public void testGetParentIds_MutlipleParentHierarchy() {
-    Task task1 = new Task("t1");
+    Task task1 = new Task("t1", "test_group");
     task1.setId(1);
-    Task task2 = new Task("t2");
+    Task task2 = new Task("t2", "test_group");
     task2.setId(2);
-    Task task3 = new Task("t3");
+    Task task3 = new Task("t3", "test_group");
     task3.setId(3);
-    Task task4 = new Task("t4");
+    Task task4 = new Task("t4", "test_group");
     task4.setId(4);
-    Task task5 = new Task("t5");
+    Task task5 = new Task("t5", "test_group");
     task5.setId(5);
-    Task task6 = new Task("t6");
+    Task task6 = new Task("t6", "test_group");
     task6.setId(6);
 
     task1.addChildTask(task2);

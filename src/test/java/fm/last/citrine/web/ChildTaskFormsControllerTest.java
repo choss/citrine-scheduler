@@ -66,7 +66,7 @@ public class ChildTaskFormsControllerTest {
   @Test
   public void testProcessFormSubmissionNoChildTasks() throws Exception {
     long taskId = 100;
-    Task task = new Task("task100");
+    Task task = new Task("task100", "test_group");
     task.setId(taskId);
     when(mockTaskManager.get(taskId)).thenReturn(task);
 
@@ -84,7 +84,7 @@ public class ChildTaskFormsControllerTest {
   @Test
   public void testProcessFormSubmissionCandidateChildTasksOnly() throws Exception {
     long taskId = 100;
-    Task task = new Task("task100");
+    Task task = new Task("task100", "test_group");
     task.setId(taskId);
     when(mockTaskManager.get(taskId)).thenReturn(task);
 
@@ -93,7 +93,7 @@ public class ChildTaskFormsControllerTest {
     dto.setSelectedGroupName("testGroupName");
 
     long candidateTaskId = 200;
-    Task candidateTask = new Task("task200");
+    Task candidateTask = new Task("task200", "test_group");
     candidateTask.setId(candidateTaskId);
     when(mockTaskManager.get(candidateTaskId)).thenReturn(candidateTask);
     Set<Long> candidateTaskIds = new HashSet<Long>();
@@ -115,7 +115,7 @@ public class ChildTaskFormsControllerTest {
   @Test
   public void testProcessFormSubmissionChildTasksOnly() throws Exception {
     long taskId = 100;
-    Task task = new Task("task100");
+    Task task = new Task("task100", "test_group");
     task.setId(taskId);
     when(mockTaskManager.get(taskId)).thenReturn(task);
 
@@ -124,7 +124,7 @@ public class ChildTaskFormsControllerTest {
     dto.setSelectedGroupName("testGroupName");
 
     long childTaskId = 300;
-    Task childTask = new Task("task300");
+    Task childTask = new Task("task300", "test_group");
     childTask.setId(childTaskId);
     when(mockTaskManager.get(childTaskId)).thenReturn(childTask);
     Set<Long> childTaskIds = new HashSet<Long>();
@@ -146,7 +146,7 @@ public class ChildTaskFormsControllerTest {
   @Test
   public void testProcessFormSubmissionCandidateAndChildTasks() throws Exception {
     long taskId = 100;
-    Task task = new Task("task100");
+    Task task = new Task("task100", "test_group");
     task.setId(taskId);
     when(mockTaskManager.get(taskId)).thenReturn(task);
 
@@ -155,7 +155,7 @@ public class ChildTaskFormsControllerTest {
     dto.setSelectedGroupName("testGroupName");
 
     long candidateTaskId = 200;
-    Task candidateTask = new Task("task200");
+    Task candidateTask = new Task("task200", "test_group");
     candidateTask.setId(candidateTaskId);
     when(mockTaskManager.get(candidateTaskId)).thenReturn(candidateTask);
     Set<Long> candidateTaskIds = new HashSet<Long>();
@@ -163,7 +163,7 @@ public class ChildTaskFormsControllerTest {
     dto.setCandidateChildTaskIds(candidateTaskIds);
 
     long childTaskId = 300;
-    Task childTask = new Task("task300");
+    Task childTask = new Task("task300", "test_group");
     childTask.setId(childTaskId);
     when(mockTaskManager.get(childTaskId)).thenReturn(childTask);
     Set<Long> childTaskIds = new HashSet<Long>();

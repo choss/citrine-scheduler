@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/choss/citrine-scheduler.svg)](https://travis-ci.org/choss/citrine-scheduler)
 
-Please not that the 4 test failures (at the moment) seem to be travisCI related. Locally all tests work (yeah it works on my machine excuse). Fixing the test is not high priority at the moment.
+Please not that the 4 test failures (at the moment) seem to be java version related. With jdk6 everything works as expected but with java7 or java8 the whole topic is problematic. 
 
 This is a patched version of citrine with a couple of new features
 

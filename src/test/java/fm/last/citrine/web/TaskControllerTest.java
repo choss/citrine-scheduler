@@ -79,7 +79,7 @@ public class TaskControllerTest {
   @Test
   public void testTask() throws Exception {
     List<Task> tasks = new ArrayList<Task>();
-    tasks.add(new Task("task1"));
+    tasks.add(new Task("task1", "test_group"));
     when(mockTaskManager.getTasks()).thenReturn(tasks);
     Map<String, Object> model = getModel();
     assertEquals(SchedulerStatus.STARTED, model.get("schedulerStatus"));
@@ -98,7 +98,7 @@ public class TaskControllerTest {
   @Test
   public void testTaskDisabled() throws Exception {
     List<Task> tasks = new ArrayList<Task>();
-    Task task = new Task("task1");
+    Task task = new Task("task1", "test_group");
     task.setEnabled(false);
     tasks.add(task);
     when(mockTaskManager.getTasks()).thenReturn(tasks);
@@ -111,7 +111,7 @@ public class TaskControllerTest {
   @Test
   public void testLastRun() throws Exception {
     List<Task> tasks = new ArrayList<Task>();
-    Task task = new Task("task1");
+    Task task = new Task("task1", "test_group");
     tasks.add(task);
     when(mockTaskManager.getTasks()).thenReturn(tasks);
     DateTime startDate = new DateTime().minusDays(1);
