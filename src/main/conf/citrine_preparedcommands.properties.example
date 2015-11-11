@@ -8,20 +8,15 @@
 # when violating these assumptions is undefined (commons-configuration might have some graceful handling here - or not)
 # 
 # The code should gracefuly handle missing subparameters, if they are not needed (e.g. extensions or exclusions)
-prepcmd1.baseDirectory=/tmp/citrine_test
-prepcmd1.title=Random Title
+# if a command is given, then the found file will be replaced in the text of the command
+prepcmd1.baseDirectory=/tmp/scheduled/scripts
+prepcmd1.title=Awesome Scripts
 prepcmd1.usableExtension=sh
 prepcmd1.usableExtension=py
 prepcmd1.excludedSuffix=_nofind.sh
-prepcmd1.excludedSuffix=_nofind.py
 prepcmd1.manditoryPrefix=run
 prepcmd1.manditoryPrefix=execute
-prepcmd1.command=nohup %1$s
 
-prepcmd2.baseDirectory=/tmp/citrine_test
-prepcmd2.usableExtension=sh
-prepcmd2.usableExtension=py
-prepcmd2.excludedSuffix=_nofind.sh
-prepcmd2.excludedSuffix=_nofind.py
-prepcmd2.manditoryPrefix=run
-prepcmd2.manditoryPrefix=execute
+prepcmd2.baseDirectory=/tmp/schedule/sqls
+prepcmd2.usableExtension=sql
+prepcmd2.command=mysql -uroot < %1$s && rm %1$s
