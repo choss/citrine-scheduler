@@ -3,6 +3,10 @@
   <head>
     <title>Task Edit</title>
     <link rel="stylesheet" href="css/generic.css" type="text/css"/>
+     <link href="external/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="external/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="javascript/cronGen.old.js"></script>
   </head>
   <body>
     <form:form commandName="taskDTO" method="POST" action="task_edit.do">
@@ -26,7 +30,7 @@
         <tr>
           <td align="right">Timer Schedule<span class="reference"><a href="http://quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger" target="_blank">[?]</a></span> <span class="reference"><a href="http://cronmaker.com" target="_blank">[1]</a></span>:</td>
           <td>
-            <form:input path="task.timerSchedule"/>
+            <form:input path="task.timerSchedule" />
             <span class="error"><form:errors path="task.timerSchedule" /></span>
           </td>
         </tr>
@@ -131,5 +135,11 @@
         </tr>
       </table>
     </form:form>
+    <script>
+            $(function () {
+                $("#task\\.timerSchedule").cronGen();                
+            });
+        </script>
+        <script src="external/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
