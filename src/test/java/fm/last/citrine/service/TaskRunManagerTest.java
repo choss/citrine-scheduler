@@ -118,7 +118,7 @@ public class TaskRunManagerTest extends BaseSpringTestCase {
     taskManager.save(task);
     TaskRun taskRun = new TaskRun(new Date(), new Date(), "out", "err", "stack", task.getId());
     
-    int mailCount = 0;
+    int mailCount = mailSender.getMessageCount();
     // no mail should be sent for following
     taskRunManager.setStatus(taskRun, Status.INITIALISING);
     assertEquals(mailCount, mailSender.getMessageCount());
