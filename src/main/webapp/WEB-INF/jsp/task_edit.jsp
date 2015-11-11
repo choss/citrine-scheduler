@@ -4,7 +4,7 @@
     <title>Task Edit</title>
     <link rel="stylesheet" href="css/generic.css" type="text/css"/>
      <link href="external/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="external/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+    <link href="external/bootstrap/css/bootstrap.css" rel="stylesheet"> 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="javascript/cronGen.old.js"></script>
   </head>
