@@ -37,7 +37,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springVersion>3.1.0.RELEASE</springVersion>
+		<springVersion>3.2.18.RELEASE</springVersion>
 		<arguments />
 	</properties>
 
@@ -86,7 +86,7 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
+			<version>1.2.27</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-configuration</groupId>
@@ -131,7 +131,7 @@
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.7</version>
+			<version>1.9.13</version>
 		</dependency>
 		<dependency>
 			<groupId>displaytag</groupId>
